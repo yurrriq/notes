@@ -1,0 +1,14 @@
+/* Local Variables:     */
+/* css-indent-offset: 2 */
+/* End:                 */
+
+body {
+  background: #fdf5db;
+}
+.src:before {
+  color: black;
+}
+.src {
+  color: white;
+  background: #1d1e19;
+}

@@ -1,0 +1,20 @@
+# Local Variables:
+# org-html-doctype: "html5"
+# End:
+
+#+TITLE:       R Notes
+#+AUTHOR:      Eric Bailey
+#+DESCRIPTION: Notes I find useful as I learn and experiment with R.
+#+KEYWORDS:    learning, notes, r, stats, programming
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css">
+
+* R
+** Vectors
+*** First index is 1, not 0
+#+BEGIN_SRC R
+  sentence <- c('this', 'is', 'a', 'sentence')
+  sentence[1] # 'this'
+#+END_SRC
+
+* Links
+- [[https://github.com/yurrriq/notes/blob/master/R.org][R.org source]]
