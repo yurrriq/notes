@@ -6,13 +6,57 @@
 #+AUTHOR:      Eric Bailey
 #+DESCRIPTION: Notes I find useful as I learn and experiment with R.
 #+KEYWORDS:    learning, notes, r, stats, programming
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/style.css">
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
 
 * Vectors
+** c is for combine
+#+BEGIN_SRC R
+sentence <- c("this", "is", "a", "sentence")
+sentence                                     # [1] "this" "is" "a" "sentence"
+#+END_SRC
 ** First index is 1, not 0
 #+BEGIN_SRC R
-sentence <- c('this', 'is', 'a', 'sentence')
-sentence[1] # 'this'
+sentence[1] # "this"
 #+END_SRC
+** Overwriting
+#+BEGIN_SRC R
+sentence[4] <- "silly"
+sentence               # [1] "this" "is" "a" "silly"
+#+END_SRC
+** Appending
+#+BEGIN_SRC R
+sentence[5] <- "example"
+sentence                 # [1] "this" "is" "a" "silly" "example"
+#+END_SRC
+** Getting multiple elements
+#+BEGIN_SRC R
+sentence[c(1, 5)] # [1] "this" "example"
+#+END_SRC
+** Ranges
+#+BEGIN_SRC R
+sentence[4:5]                          # [1] "silly" "example"
+sentence[4:5] <- c("cool", "language") # [1] "this" "is" "a" "cool" "language"
+#+END_SRC
+** Named elements
+#+BEGIN_SRC R
+named <- 1:3
+names(named) <- c("this", "that", "the other")
+named                                          # this      that the other
+                                               #    1         2         3
+named["the other"] <- 42
+named["the other"] == named[3]                 # T
+named[3] == 42                                 # T
+#+END_SRC
+** Combining
+#+BEGIN_SRC R :results output graphics :file img/barplot_01.png :width 320 :height 320
+sails <- c(1:10,5:1,1:30,15:1,1:20,10:1)
+barplot(sails)
+#+END_SRC
+
+#+RESULTS:
+[[file:img/barplot_01.png]]
+
+[[./img/barplot_01.png]]
 * Links
 - [[https://github.com/yurrriq/notes/blob/master/R.org?raw=true][R.org source]]
