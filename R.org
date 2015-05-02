@@ -8,13 +8,11 @@
 #+KEYWORDS:    learning, notes, r, stats, programming
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css">
 
-* R
-** Vectors
-*** First index is 1, not 0
+* Vectors
+** First index is 1, not 0
 #+BEGIN_SRC R
   sentence <- c('this', 'is', 'a', 'sentence')
   sentence[1] # 'this'
 #+END_SRC
-
 * Links
-- [[https://github.com/yurrriq/notes/blob/master/R.org][R.org source]]
+- [[https://github.com/yurrriq/notes/blob/master/R.org?raw=true][R.org source]]
