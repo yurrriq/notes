@@ -11,8 +11,8 @@
 * Vectors
 ** First index is 1, not 0
 #+BEGIN_SRC R
-  sentence <- c('this', 'is', 'a', 'sentence')
-  sentence[1] # 'this'
+sentence <- c('this', 'is', 'a', 'sentence')
+sentence[1] # 'this'
 #+END_SRC
 * Links
 - [[https://github.com/yurrriq/notes/blob/master/R.org?raw=true][R.org source]]
