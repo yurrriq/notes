@@ -33,6 +33,14 @@ sentence[c(1, 5)] # [1] "this" "example"
 sentence[4:5]                          # [1] "silly" "example"
 sentence[4:5] <- c("cool", "language") # [1] "this" "is" "a" "cool" "language"
 #+END_SRC
+** Sequences
+#+BEGIN_SRC R
+5:9 == seq(5, 9) # [1] TRUE TRUE TRUE TRUE TRUE
+#+END_SRC
+*** With a step
+#+BEGIN_SRC R
+seq(2, 8, 2)     # [1] 2 4 6 8
+#+END_SRC
 ** Named elements
 #+BEGIN_SRC R
 named <- 1:3
@@ -72,6 +80,16 @@ Keep in mind, it doesn't alter the original variable.
 
 #+BEGIN_SRC R
 misfits # [1] 1 3 8
+#+END_SRC
+** Scatter plots
+#+BEGIN_SRC R
+x <-
+#+END_SRC
+** na.rm
+#+BEGIN_SRC R
+a <- c(1, NA, 2, NA, 3) # [1] 1 NA 2 NA 3
+sum(a)                  # [1] NA
+sum(a, na.rm = TRUE)    # [1] 6
 #+END_SRC
 * Links
 - [[https://github.com/yurrriq/notes/blob/master/R.org?raw=true][R.org source]]
