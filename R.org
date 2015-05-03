@@ -1,12 +1,7 @@
-# Local Variables:
-# org-html-doctype: "html5"
-# End:
-
+#+SETUPFILE:   ~/.emacs.d/org-templates/notes.org
 #+TITLE:       R Notes
-#+AUTHOR:      Eric Bailey
 #+DESCRIPTION: Notes I find useful as I learn and experiment with R.
 #+KEYWORDS:    learning, notes, r, stats, programming
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/style.css">
 #+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
 
 * Vectors
@@ -49,13 +44,13 @@ named["the other"] == named[3]                 # T
 named[3] == 42                                 # T
 #+END_SRC
 ** Combining
-#+BEGIN_SRC R :results output graphics :file img/barplot_01.png :width 320 :height 320
+#+BEGIN_SRC R :results output graphics :file public_html/img/barplot_01.png :width 320 :height 320
 sails <- c(1:10,5:1,1:30,15:1,1:20,10:1)
 barplot(sails)
 #+END_SRC
 
 #+RESULTS:
-[[file:img/barplot_01.png]]
+[[file:public_html/img/barplot_01.png]]
 
 [[./img/barplot_01.png]]
 ** Basic arithmetic
