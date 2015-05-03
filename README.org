@@ -1,0 +1,22 @@
+* Notes
+My notes as I learn all the things.
+
+** Project Settings
+
+*** notes.el
+#+BEGIN_SRC emacs-lisp
+(setq org-publish-project-alist
+      '(("notes"
+         :base-directory "~/org/notes/"
+         :base-extension "org"
+         :exclude "\\(notes\\|README\\).org"
+         :publishing-directory "~/org/notes/public_html/"
+         :publishing-function org-html-publish-to-html)))
+#+END_SRC
+
+*** notes.org
+#+BEGIN_SRC org
+,#+AUTHOR: Eric Bailey
+,#+HTML_DOCTYPE: html5
+,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/style.css">
+#+END_SRC
