@@ -4,7 +4,7 @@ My notes as I learn all the things.
 ** Project Settings
 
 *** notes.el
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle notes.el
 (setq org-publish-project-alist
       '(("notes"
          :base-directory "~/org/notes/"
@@ -15,7 +15,7 @@ My notes as I learn all the things.
 #+END_SRC
 
 *** notes.org
-#+BEGIN_SRC org
+#+BEGIN_SRC org :tangle notes.org
 ,#+AUTHOR: Eric Bailey
 ,#+HTML_DOCTYPE: html5
 ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/style.css">
