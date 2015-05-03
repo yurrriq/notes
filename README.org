@@ -1,9 +1,9 @@
 * Notes
 My notes as I learn all the things.
 
-** Project Settings
+** Settings
 
-*** notes.el
+*** [[file:notes.el][notes.el]]
 #+BEGIN_SRC emacs-lisp :tangle notes.el
 (setq org-publish-project-alist
       '(("notes"
@@ -14,7 +14,7 @@ My notes as I learn all the things.
          :publishing-function org-html-publish-to-html)))
 #+END_SRC
 
-*** notes.org
+*** [[file:notes.org][notes.org]]
 #+BEGIN_SRC org :tangle notes.org
 ,#+AUTHOR: Eric Bailey
 ,#+HTML_DOCTYPE: html5
