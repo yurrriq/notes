@@ -1,0 +1,12 @@
+#+SETUPFILE:   ~/.emacs.d/org-templates/notes.org
+#+TITLE:       VirtualBox Notes
+#+AUTHOR: Eric Bailey
+#+DATE: [2015-12-12 Sat]
+#+DESCRIPTION: Notes I find useful as I experiment with VirtualBox.
+#+KEYWORDS:    learning, notes, VirtualBox
+
+#+BEGIN_SRC sh
+VBoxManage internalcommands createrawvmdk \
+           -filename ~/VirtualBox\ VMs/${VM_NAME}/${DISK_NAME}.vmdk
+           -rawdisk /dev/disk${DISK_NUMBER}s${PARTITION_NUMBER}
+#+END_SRC
