@@ -1,0 +1,5 @@
+#+SETUPFILE: notes.org
+#+TITLE: Notes
+#+SUBTITLE: My Notes as a learn all the things.
+
+#+INCLUDE: sitemap.org

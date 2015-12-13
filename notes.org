@@ -1,4 +1,4 @@
-
 #+AUTHOR: Eric Bailey
 #+HTML_DOCTYPE: html5
+#+KEYWORDS: notes,
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/style.css">

@@ -1,9 +1,8 @@
-#+SETUPFILE:   ~/.emacs.d/org-templates/notes.org
+#+SETUPFILE:   notes.org
 #+TITLE:       R Notes
-#+AUTHOR: Eric Bailey
-#+DATE: [2015-05-02 Sat]
+#+DATE:        2015-05-02
 #+DESCRIPTION: Notes I find useful as I learn and experiment with R.
-#+KEYWORDS:    learning, notes, r, stats, programming
+#+KEYWORDS:    learning, r, stats, programming
 #+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
 
 * Vectors

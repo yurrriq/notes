@@ -1,9 +1,8 @@
-#+SETUPFILE:   ~/.emacs.d/org-templates/notes.org
+#+SETUPFILE:   notes.org
 #+TITLE:       VirtualBox Notes
-#+AUTHOR: Eric Bailey
-#+DATE: [2015-12-12 Sat]
+#+DATE:        2015-12-12
 #+DESCRIPTION: Notes I find useful as I experiment with VirtualBox.
-#+KEYWORDS:    learning, notes, VirtualBox
+#+KEYWORDS:    VirtualBox
 
 #+BEGIN_SRC sh
 VBoxManage internalcommands createrawvmdk \
