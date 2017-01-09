@@ -13,7 +13,7 @@ My notes as I learn all the things.
 #+END_SRC
 *** [[file:notes.el][notes.el]]
 #+BEGIN_SRC emacs-lisp :tangle notes.el
-;; (require 'htmlize)
+(require 'htmlize)
 
 (setq org-html-htmlize-output-type 'inline-css)
 

@@ -1,4 +1,4 @@
-;; (require 'htmlize)
+(require 'htmlize)
 
 (setq org-html-htmlize-output-type 'inline-css)
 
