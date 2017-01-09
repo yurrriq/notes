@@ -152,7 +152,7 @@ Speaking of which, we can check if an [[Apple][=apple=]] is green:
 "green".equals(apple.getColor())
 #+END_SRC
 
-or check if its /heavy/, meaning its [[Apple weight][=weight=]] is greater than =150=:
+or check if it's /heavy/, meaning its [[Apple weight][=weight=]] is greater than =150=:
 #+NAME: heavy apple?
 #+BEGIN_SRC java
 apple.getWeight() > 150
