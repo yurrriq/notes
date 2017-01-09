@@ -1,3 +1,4 @@
+#+STARTUP: showall
 * Notes
 My notes as I learn all the things.
 
@@ -12,7 +13,7 @@ My notes as I learn all the things.
 #+END_SRC
 *** [[file:notes.el][notes.el]]
 #+BEGIN_SRC emacs-lisp :tangle notes.el
-(require 'htmlize)
+;; (require 'htmlize)
 
 (setq org-html-htmlize-output-type 'inline-css)
 
@@ -23,7 +24,7 @@ My notes as I learn all the things.
 
 (let ((project              "notes")
       (base-directory       "~/org/notes/")
-      (publishing-directory "~/org/notes/public_html/"))
+      (publishing-directory "~/org/notes/docs/"))
   (add-to-list
    'org-publish-project-alist
    `(,project

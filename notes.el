@@ -1,4 +1,4 @@
-(require 'htmlize)
+;; (require 'htmlize)
 
 (setq org-html-htmlize-output-type 'inline-css)
 
@@ -9,7 +9,7 @@
 
 (let ((project              "notes")
       (base-directory       "~/org/notes/")
-      (publishing-directory "~/org/notes/public_html/"))
+      (publishing-directory "~/org/notes/docs/"))
   (add-to-list
    'org-publish-project-alist
    `(,project
