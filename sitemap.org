@@ -1,7 +1,7 @@
 #+TITLE: 
 
+   + [[file:index.org][Notes]]
+   + [[file:R.org][R Notes]]
    + [[file:idris.org][Idris Notes]]
    + [[file:category_theory.org][Category Theory Notes]]
    + [[file:VirtualBox.org][VirtualBox Notes]]
-   + [[file:index.org][Notes]]
-   + [[file:R.org][R Notes]]

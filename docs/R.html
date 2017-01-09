@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2017-01-08 Sun 22:31 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title></title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Eric Bailey" />
+<!-- 2017-01-08 Sun 22:28 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R Notes</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Eric Bailey">
+<meta name="description" content="Notes I find useful as I learn and experiment with R."
+>
+<meta name="keywords" content="notes, learning, r, stats, programming">
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -179,6 +180,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -228,16 +230,209 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<ul class="org-ul">
-<li><a href="index.html">Notes</a></li>
-<li><a href="R.html">R Notes</a></li>
-<li><a href="idris.html">Idris Notes</a></li>
-<li><a href="category_theory.html">Category Theory Notes</a></li>
-<li><a href="VirtualBox.html">VirtualBox Notes</a></li>
+<h1 class="title">R Notes</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4e19d8d">Vectors</a>
+<ul>
+<li><a href="#orge1a8572">c is for combine</a></li>
+<li><a href="#org9e8df55">First index is 1, not 0</a></li>
+<li><a href="#orgf3a18e1">Overwriting</a></li>
+<li><a href="#orga295dbc">Appending</a></li>
+<li><a href="#org0511cbf">Getting multiple elements</a></li>
+<li><a href="#orgd69a416">Ranges</a></li>
+<li><a href="#org4f3aec2">Sequences</a>
+<ul>
+<li><a href="#org57cab54">With a step</a></li>
+</ul>
+</li>
+<li><a href="#org0185da8">Named elements</a></li>
+<li><a href="#orgf216517">Combining</a></li>
+<li><a href="#orga870ea2">Basic arithmetic</a></li>
+<li><a href="#orge716b89">Scatter plots</a></li>
+<li><a href="#org9ae1110">na.rm</a></li>
+</ul>
+</li>
+<li><a href="#org68c0290">Links</a></li>
 </ul>
 </div>
+</div>
+
+<div id="outline-container-org4e19d8d" class="outline-2">
+<h2 id="org4e19d8d">Vectors</h2>
+<div class="outline-text-2" id="text-org4e19d8d">
+</div><div id="outline-container-orge1a8572" class="outline-3">
+<h3 id="orge1a8572">c is for combine</h3>
+<div class="outline-text-3" id="text-orge1a8572">
+<div class="org-src-container">
+<pre class="src src-R">sentence &lt;- c("this", "is", "a", "sentence")
+sentence                                     # [1] "this" "is" "a" "sentence"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9e8df55" class="outline-3">
+<h3 id="org9e8df55">First index is 1, not 0</h3>
+<div class="outline-text-3" id="text-org9e8df55">
+<div class="org-src-container">
+<pre class="src src-R">sentence[1] # "this"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3a18e1" class="outline-3">
+<h3 id="orgf3a18e1">Overwriting</h3>
+<div class="outline-text-3" id="text-orgf3a18e1">
+<div class="org-src-container">
+<pre class="src src-R">sentence[4] &lt;- "silly"
+sentence               # [1] "this" "is" "a" "silly"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga295dbc" class="outline-3">
+<h3 id="orga295dbc">Appending</h3>
+<div class="outline-text-3" id="text-orga295dbc">
+<div class="org-src-container">
+<pre class="src src-R">sentence[5] &lt;- "example"
+sentence                 # [1] "this" "is" "a" "silly" "example"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0511cbf" class="outline-3">
+<h3 id="org0511cbf">Getting multiple elements</h3>
+<div class="outline-text-3" id="text-org0511cbf">
+<div class="org-src-container">
+<pre class="src src-R">sentence[c(1, 5)] # [1] "this" "example"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd69a416" class="outline-3">
+<h3 id="orgd69a416">Ranges</h3>
+<div class="outline-text-3" id="text-orgd69a416">
+<div class="org-src-container">
+<pre class="src src-R">sentence[4:5]                          # [1] "silly" "example"
+sentence[4:5] &lt;- c("cool", "language") # [1] "this" "is" "a" "cool" "language"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f3aec2" class="outline-3">
+<h3 id="org4f3aec2">Sequences</h3>
+<div class="outline-text-3" id="text-org4f3aec2">
+<div class="org-src-container">
+<pre class="src src-R">5:9 == seq(5, 9) # [1] TRUE TRUE TRUE TRUE TRUE
+</pre>
+</div>
+</div>
+<div id="outline-container-org57cab54" class="outline-4">
+<h4 id="org57cab54">With a step</h4>
+<div class="outline-text-4" id="text-org57cab54">
+<div class="org-src-container">
+<pre class="src src-R">seq(2, 8, 2)     # [1] 2 4 6 8
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0185da8" class="outline-3">
+<h3 id="org0185da8">Named elements</h3>
+<div class="outline-text-3" id="text-org0185da8">
+<div class="org-src-container">
+<pre class="src src-R">named &lt;- 1:3
+names(named) &lt;- c("this", "that", "the other")
+named                                          # this      that the other
+                                               #    1         2         3
+named["the other"] &lt;- 42
+named["the other"] == named[3]                 # T
+named[3] == 42                                 # T
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf216517" class="outline-3">
+<h3 id="orgf216517">Combining</h3>
+<div class="outline-text-3" id="text-orgf216517">
+<div class="org-src-container">
+<pre class="src src-R">sails &lt;- c(1:10,5:1,1:30,15:1,1:20,10:1)
+barplot(sails)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/barplot_01.png" alt="barplot_01.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga870ea2" class="outline-3">
+<h3 id="orga870ea2">Basic arithmetic</h3>
+<div class="outline-text-3" id="text-orga870ea2">
+<div class="org-src-container">
+<pre class="src src-R">misfits &lt;- c(1, 3, 8) # [1] 1 3 8
+misfits + 10          # [1] 11 13 18
+misfits - 10          # [1] -9 -7 -2
+misfits * 10          # [1] 10 30 80
+misfits / 10          # [1] 0.1 0.3 0.8
+</pre>
+</div>
+
+<p>
+Sort of like Clojure's <code>map</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(for [f [+ - * /]] (map #(f % 10) '(1 3 8)))
+</pre>
+</div>
+
+<p>
+Keep in mind, it doesn't alter the original variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">misfits # [1] 1 3 8
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge716b89" class="outline-3">
+<h3 id="orge716b89">Scatter plots</h3>
+<div class="outline-text-3" id="text-orge716b89">
+<div class="org-src-container">
+<pre class="src src-R">x &lt;-
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9ae1110" class="outline-3">
+<h3 id="org9ae1110">na.rm</h3>
+<div class="outline-text-3" id="text-org9ae1110">
+<div class="org-src-container">
+<pre class="src src-R">a &lt;- c(1, NA, 2, NA, 3) # [1] 1 NA 2 NA 3
+sum(a)                  # [1] NA
+sum(a, na.rm = TRUE)    # [1] 6
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org68c0290" class="outline-2">
+<h2 id="org68c0290">Links</h2>
+<div class="outline-text-2" id="text-org68c0290">
+<ul class="org-ul">
+<li><a href="https://github.com/yurrriq/notes/blob/master/R.org?raw=true">R.org source</a></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
-<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-01-08 Sun 22:31</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.3)</span>.
+<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-01-08 Sun 22:28</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.3)</span>.
 </div>
 </body>
 </html>
