@@ -1,5 +1,6 @@
-#+TITLE: 
+#+TITLE:
 
+   + [[file:java8.org][Java 8 in Action]]
    + [[file:index.org][Notes]]
    + [[file:R.org][R Notes]]
    + [[file:idris.org][Idris Notes]]

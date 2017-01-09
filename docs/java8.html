@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2017-01-09 Mon 04:39 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java 8 in Action</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Eric Bailey">
+<meta name="description" content="Notes as I read the Java 8 Manning book."
+>
+<meta name="keywords" content="notes, Java, Java 8, functional programming">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Java 8 in Action</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org511b9bd">Chapter 1</a>
+<ul>
+<li><a href="#orgb57538c">Filtering Apples Outline</a></li>
+<li><a href="#orgd9b99a4">Apple Class</a>
+<ul>
+<li><a href="#orge6952b2">Properties</a></li>
+<li><a href="#orgdcef512">Methods</a></li>
+</ul>
+</li>
+<li><a href="#org8328d33">Filtering Methods</a>
+<ul>
+<li><a href="#org9aeba95">Filter Green Apples</a></li>
+<li><a href="#org36861fb">Filter Heavy Apples</a></li>
+<li><a href="#org4f412e4">Generic Apple Filter</a></li>
+</ul>
+</li>
+<li><a href="#org5b24242">Predicates</a></li>
+<li><a href="#orgb31140d">Main</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org511b9bd" class="outline-2">
+<h2 id="org511b9bd">Chapter 1</h2>
+<div class="outline-text-2" id="text-org511b9bd">
+<p>
+<a href="https://github.com/java8/Java8InAction/blob/master/src/main/java/lambdasinaction/chap1/FilteringApples.java">Link</a>
+</p>
+</div>
+
+<div id="outline-container-orgb57538c" class="outline-3">
+<h3 id="orgb57538c">Filtering Apples Outline</h3>
+<div class="outline-text-3" id="text-orgb57538c">
+<div class="org-src-container">
+<pre class="src src-java">&lt;&lt;name <span style="color: #66D9EF;">the</span> <span style="color: #F92672;">package</span>&gt;&gt;
+
+&lt;&lt;imports&gt;&gt;
+
+<span style="color: #F92672;">public</span> <span style="color: #F92672;">class</span> FilteringApples {
+
+    &lt;&lt;main&gt;&gt;
+
+    &lt;&lt;filter <span style="color: #66D9EF;">green</span> <span style="color: #FD971F;">apples</span>&gt;&gt;
+
+    &lt;&lt;filter <span style="color: #66D9EF;">heavy</span> <span style="color: #FD971F;">apples</span>&gt;&gt;
+
+    &lt;&lt;is <span style="color: #66D9EF;">green</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;
+
+    &lt;&lt;is <span style="color: #66D9EF;">heavy</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;
+
+    &lt;&lt;generic <span style="color: #66D9EF;">apples</span> <span style="color: #FD971F;">filter</span>&gt;&gt;
+
+    &lt;&lt;<span style="color: #66D9EF;">Apple</span>&gt;&gt;
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd9b99a4" class="outline-3">
+<h3 id="orgd9b99a4">Apple Class</h3>
+<div class="outline-text-3" id="text-orgd9b99a4">
+<div class="org-src-container">
+<pre class="src src-java" id="orgc52090d"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #F92672;">class</span> <span style="color: #66D9EF;">Apple</span> {
+    &lt;&lt;<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">properties</span>&gt;&gt;
+
+    &lt;&lt;<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">constructor</span>&gt;&gt;
+
+    &lt;&lt;Apple <span style="color: #66D9EF;">weight</span> <span style="color: #FD971F;">getter</span>&gt;&gt;
+
+    &lt;&lt;Apple <span style="color: #66D9EF;">weight</span> <span style="color: #FD971F;">setter</span>&gt;&gt;
+
+    &lt;&lt;Apple <span style="color: #66D9EF;">color</span> <span style="color: #FD971F;">getter</span>&gt;&gt;
+
+    &lt;&lt;Apple <span style="color: #66D9EF;">color</span> <span style="color: #FD971F;">setter</span>&gt;&gt;
+
+    &lt;&lt;Apple <span style="color: #66D9EF;">pretty</span> <span style="color: #FD971F;">printer</span>&gt;&gt;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge6952b2" class="outline-4">
+<h4 id="orge6952b2">Properties</h4>
+<div class="outline-text-4" id="text-orge6952b2">
+<p>
+An <a href="#org4e19f62"><code>Apple</code></a> has two properties, <a href="#org7c8b452"><code>weight</code></a> and <a href="#org4e19f62"><code>color</code></a>,
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="orgaf4d161">&lt;&lt;<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">weight</span>&gt;&gt;
+&lt;&lt;<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">color</span>&gt;&gt;
+</pre>
+</div>
+
+<p>
+where the <a href="#org7c8b452">weight</a> is an <code>int</code> with the default value <code>0</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org7c8b452"><span style="color: #F92672;">private</span> <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">weight</span> = 0;
+</pre>
+</div>
+
+<p>
+and the <a href="#org9ebd824"><code>color</code></a> is a <code>String</code> with the default value <code>""</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org9ebd824"><span style="color: #F92672;">private</span> <span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">color</span> = <span style="color: #E6DB74;">""</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcef512" class="outline-4">
+<h4 id="orgdcef512">Methods</h4>
+<div class="outline-text-4" id="text-orgdcef512">
+<p>
+Given a <a href="#org7c8b452"><code>weight</code></a> and a <a href="#org9ebd824"><code>color</code></a>, construct an <a href="#orgc52090d"><code>Apple</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="orgfcab7ca"><span style="color: #F92672;">public</span> <span style="color: #A6E22E;">Apple</span>(<span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">weight</span>, <span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">color</span>) {
+    <span style="color: #F92672;">this</span>.weight = weight;
+    <span style="color: #F92672;">this</span>.color = color;
+}
+</pre>
+</div>
+</div>
+
+<ul class="org-ul"><li><a id="org7775746"></a>Getters<br ><div class="outline-text-5" id="text-org7775746">
+<p>
+Get the <a href="#org7c8b452"><code>weight</code></a> of an <a href="#orgc52090d"><code>Apple</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org38d8790"><span style="color: #F92672;">public</span> <span style="color: #66D9EF;">Integer</span> <span style="color: #A6E22E;">getWeight</span>() {
+    <span style="color: #F92672;">return</span> weight;
+}
+</pre>
+</div>
+
+<p>
+Get the <a href="#org9ebd824"><code>color</code></a> of an <a href="#orgc52090d"><code>Apple</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org03a87e6"><span style="color: #F92672;">public</span> <span style="color: #66D9EF;">String</span> <span style="color: #A6E22E;">getColor</span>() {
+    <span style="color: #F92672;">return</span> color;
+}
+</pre>
+</div>
+</div></li>
+
+<li><a id="org16bcf7a"></a>Setters<br ><div class="outline-text-5" id="text-org16bcf7a">
+<p>
+Set an <a href="#orgc52090d"><code>Apple</code></a>'s <a href="#org7c8b452"><code>weight</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="orgcb8da80"><span style="color: #F92672;">public</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">setWeight</span>(<span style="color: #66D9EF;">Integer</span> <span style="color: #FD971F;">weight</span>) {
+    <span style="color: #F92672;">this</span>.weight = weight;
+}
+</pre>
+</div>
+
+<p>
+Set an <a href="#orgc52090d"><code>Apple</code></a>'s <a href="#org9ebd824"><code>color</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org4e19f62"><span style="color: #F92672;">public</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">setColor</span>(<span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">color</span>) {
+    <span style="color: #F92672;">this</span>.color = color;
+}
+</pre>
+</div>
+</div></li>
+
+<li><a id="org932ff50"></a>Pretty Printer<br ><div class="outline-text-5" id="text-org932ff50">
+<div class="org-src-container">
+<pre class="src src-java" id="orgfd497fd"><span style="color: #F92672;">public</span> <span style="color: #66D9EF;">String</span> <span style="color: #A6E22E;">toString</span>() {
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Apple{"</span> +
+           <span style="color: #E6DB74;">"color='"</span> + color + <span style="color: #E6DB74;">'\''</span> +
+           <span style="color: #E6DB74;">", weight="</span> + weight +
+           <span style="color: #E6DB74;">'}'</span>;
+}
+</pre>
+</div>
+</div></li></ul>
+</div>
+</div>
+
+<div id="outline-container-org8328d33" class="outline-3">
+<h3 id="org8328d33">Filtering Methods</h3>
+<div class="outline-text-3" id="text-org8328d33">
+<p>
+We're going to need build lists of <a href="#orgc52090d"><code>Apple</code></a>s here, so we'll start with the empty
+list as the <code>result</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org9f8c28c"><span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">result</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">ArrayList</span>&lt;&gt;();
+</pre>
+</div>
+
+<p>
+so we can collect <a href="#orgc52090d">=apple=s</a> matching some predicate:
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org22a1d79">result.add(apple);
+</pre>
+</div>
+
+<p>
+Speaking of which, we can check if an <a href="#orgc52090d"><code>apple</code></a> is green:
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org7c223d4"><span style="color: #E6DB74;">"green"</span>.equals(apple.getColor())
+</pre>
+</div>
+
+<p>
+or check if its <i>heavy</i>, meaning its <a href="#org7c8b452"><code>weight</code></a> is greater than <code>150</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="orgec59f2c">apple.getWeight() &gt; 150
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9aeba95" class="outline-4">
+<h4 id="org9aeba95">Filter Green Apples</h4>
+<div class="outline-text-4" id="text-org9aeba95">
+<div class="org-src-container">
+<pre class="src src-java" id="orgbb8fe12"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #A6E22E;">filterGreenApples</span>(<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">inventory</span>) {
+    &lt;&lt;initialize result as the <span style="color: #66D9EF;">empty</span> <span style="color: #FD971F;">ArrayList</span>&gt;&gt;
+    &lt;&lt;collect the green <span style="color: #66D9EF;">apples</span> <span style="color: #FD971F;">iteratively</span>&gt;&gt;
+    <span style="color: #F92672;">return</span> result;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org71d601a"><span style="color: #F92672;">for</span> (<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">apple</span>: inventory) {
+    <span style="color: #F92672;">if</span> (&lt;&lt;<span style="color: #66D9EF;">green</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;) {
+        &lt;&lt;add apple <span style="color: #66D9EF;">to</span> <span style="color: #FD971F;">result</span>&gt;&gt;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36861fb" class="outline-4">
+<h4 id="org36861fb">Filter Heavy Apples</h4>
+<div class="outline-text-4" id="text-org36861fb">
+<div class="org-src-container">
+<pre class="src src-java" id="org8fc3eea"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #A6E22E;">filterHeavyApples</span>(<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">inventory</span>) {
+    &lt;&lt;initialize result as the <span style="color: #66D9EF;">empty</span> <span style="color: #FD971F;">ArrayList</span>&gt;&gt;
+    &lt;&lt;collect the heavy <span style="color: #66D9EF;">apples</span> <span style="color: #FD971F;">iteratively</span>&gt;&gt;
+    <span style="color: #F92672;">return</span> result;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgfb46a0c"><span style="color: #F92672;">for</span> (<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">apple</span>: inventory) {
+    <span style="color: #F92672;">if</span> (&lt;&lt;<span style="color: #66D9EF;">heavy</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;) {
+        &lt;&lt;add apple <span style="color: #66D9EF;">to</span> <span style="color: #FD971F;">result</span>&gt;&gt;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f412e4" class="outline-4">
+<h4 id="org4f412e4">Generic Apple Filter</h4>
+<div class="outline-text-4" id="text-org4f412e4">
+<div class="org-src-container">
+<pre class="src src-java" id="orge0a5fea"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #A6E22E;">filterApples</span>(<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">inventory</span>, <span style="color: #66D9EF;">Predicate</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">pred</span>) {
+    &lt;&lt;initialize result as the <span style="color: #66D9EF;">empty</span> <span style="color: #FD971F;">ArrayList</span>&gt;&gt;
+    <span style="color: #F92672;">for</span> (<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">apple</span>: inventory) {
+        <span style="color: #F92672;">if</span> (pred.test(apple)) {
+            &lt;&lt;add apple <span style="color: #66D9EF;">to</span> <span style="color: #FD971F;">result</span>&gt;&gt;
+        }
+    }
+    <span style="color: #F92672;">return</span> result;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5b24242" class="outline-3">
+<h3 id="org5b24242">Predicates</h3>
+<div class="outline-text-3" id="text-org5b24242">
+<div class="org-src-container">
+<pre class="src src-java" id="orgbb2c9ce"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">boolean</span> <span style="color: #A6E22E;">isGreenApple</span>(<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">apple</span>) {
+    <span style="color: #F92672;">return</span> &lt;&lt;<span style="color: #66D9EF;">green</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgf20456b"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">boolean</span> <span style="color: #A6E22E;">isHeavyApple</span>(<span style="color: #66D9EF;">Apple</span> <span style="color: #FD971F;">apple</span>) {
+    <span style="color: #F92672;">return</span> &lt;&lt;<span style="color: #66D9EF;">heavy</span> <span style="color: #FD971F;">apple</span>?&gt;&gt;;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb31140d" class="outline-3">
+<h3 id="orgb31140d">Main</h3>
+<div class="outline-text-3" id="text-orgb31140d">
+<div class="org-src-container">
+<pre class="src src-java" id="org240fe2f"><span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">main</span>(<span style="color: #66D9EF;">String</span> ... <span style="color: #FD971F;">args</span>) {
+
+    &lt;&lt;inventory&gt;&gt;
+
+    &lt;&lt;green apples by <span style="color: #66D9EF;">method</span> <span style="color: #FD971F;">reference</span>&gt;&gt;
+
+    &lt;&lt;heavy apples by <span style="color: #66D9EF;">method</span> <span style="color: #FD971F;">reference</span>&gt;&gt;
+
+    &lt;&lt;green apples <span style="color: #66D9EF;">via</span> <span style="color: #FD971F;">lambda</span>&gt;&gt;
+
+    &lt;&lt;heavy apples <span style="color: #66D9EF;">via</span> <span style="color: #FD971F;">lambda</span>&gt;&gt;
+
+    &lt;&lt;weird apples with overly <span style="color: #66D9EF;">complex</span> <span style="color: #FD971F;">lambda</span>&gt;&gt;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org508366c"><span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">inventory</span> = Arrays.asList(<span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Apple</span>(80, <span style="color: #E6DB74;">"green"</span>),
+                                      <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Apple</span>(155, <span style="color: #E6DB74;">"green"</span>),
+                                      <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Apple</span>(120, <span style="color: #E6DB74;">"red"</span>));
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org360b0d8">&lt;&lt;comment: just the green apples&gt;&gt;
+<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; greenApples = filterApples(inventory, FilteringApples::isGreenApple);
+System.out.println(greenApples);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org474a0b0">&lt;&lt;comment: just the heavy apples&gt;&gt;
+<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
+System.out.println(heavyApples);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org5efd696">&lt;&lt;comment: just the green apples&gt;&gt;
+<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; greenApples2 = filterApples(inventory, (Apple <span style="color: #66D9EF;">a</span>) -&gt; &lt;&lt;<span style="color: #66D9EF;">a</span> <span style="color: #FD971F;">green</span>?&gt;&gt;);
+System.out.println(greenApples2);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org10435e6">&lt;&lt;comment: just the heavy apples&gt;&gt;
+<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; heavyApples2 = filterApples(inventory, (Apple <span style="color: #66D9EF;">a</span>) -&gt; &lt;&lt;<span style="color: #66D9EF;">a</span> <span style="color: #FD971F;">heavy</span>?&gt;&gt;);
+System.out.println(heavyApples2);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orge4db55d"><span style="color: #75715E;">// </span><span style="color: #75715E;">[]</span>
+<span style="color: #66D9EF;">List</span>&lt;<span style="color: #66D9EF;">Apple</span>&gt; <span style="color: #FD971F;">weirdApples</span> = filterApples(inventory, (Apple <span style="color: #66D9EF;">a</span>) -&gt; &lt;&lt;<span style="color: #66D9EF;">a</span> <span style="color: #FD971F;">light</span>?&gt;&gt; ||
+                                       &lt;&lt;<span style="color: #66D9EF;">a</span> <span style="color: #FD971F;">brown</span>?&gt;&gt;);
+System.out.println(weirdApples);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgfa9ac89">a.getWeight() &gt; 150
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgc3f4224">a.getWeight() &lt; 80
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org8599d87"><span style="color: #E6DB74;">"green"</span>.equals(a.getColor())
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgb0e56d6"><span style="color: #E6DB74;">"brown"</span>.equals(a.getColor())
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org34fbe36"><span style="color: #75715E;">// </span><span style="color: #75715E;">[Apple{color='green', weight=80}, Apple{color='green', weight=155}]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org619946b"><span style="color: #75715E;">// </span><span style="color: #75715E;">[Apple{color='green', weight=155}]</span>
+</pre>
+</div>
+
+<p>
+Name the package <code>lambdasinaction.chap1</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org17c012a"><span style="color: #F92672;">package</span> lambdasinaction.<span style="color: #AE81FF;">chap1</span>;
+</pre>
+</div>
+
+<p>
+Import <a href="https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html#package.description"><code>java.util.*</code></a> and <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html"><code>Predicate&lt;T&gt;</code></a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="orga09e2d1"><span style="color: #F92672;">import</span> <span style="color: #AE81FF;">java</span>.<span style="color: #AE81FF;">util</span>.*;
+<span style="color: #F92672;">import</span> <span style="color: #AE81FF;">java</span>.<span style="color: #AE81FF;">util</span>.<span style="color: #AE81FF;">function</span>.<span style="color: #66D9EF;">Predicate</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-01-09 Mon 04:39</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.3)</span>.
+</div>
+</body>
+</html>

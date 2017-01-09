@@ -1,0 +1,331 @@
+#+STARTUP: showall
+#+SETUPFILE:   notes.org
+#+TITLE:       Java 8 in Action
+#+DATE:        2017-01-08
+#+DESCRIPTION: Notes as I read the Java 8 Manning book.
+#+KEYWORDS:    Java, Java 8, functional programming
+#+BABEL: :cache yes :tangle yes :noweb yes
+
+* Chapter 1
+  :PROPERTIES:
+  :noweb:    yes
+  :END:
+[[https://github.com/java8/Java8InAction/blob/master/src/main/java/lambdasinaction/chap1/FilteringApples.java][Link]]
+
+** Filtering Apples Outline
+#+BEGIN_SRC java :tangle src/main/java/lambdasinaction/chap1/FilteringApples.java :noweb tangle
+<<name the package>>
+
+<<imports>>
+
+public class FilteringApples {
+
+    <<main>>
+
+    <<filter green apples>>
+
+    <<filter heavy apples>>
+
+    <<is green apple?>>
+
+    <<is heavy apple?>>
+
+    <<generic apples filter>>
+
+    <<Apple>>
+
+}
+#+END_SRC
+
+** Apple Class
+#+NAME: Apple
+#+BEGIN_SRC java
+public static class Apple {
+    <<Apple properties>>
+
+    <<Apple constructor>>
+
+    <<Apple weight getter>>
+
+    <<Apple weight setter>>
+
+    <<Apple color getter>>
+
+    <<Apple color setter>>
+
+    <<Apple pretty printer>>
+}
+#+END_SRC
+
+*** Properties
+An [[Apple color setter][=Apple=]] has two properties, [[Apple weight][=weight=]] and [[Apple color setter][=color=]],
+#+NAME: Apple properties
+#+BEGIN_SRC java
+<<Apple weight>>
+<<Apple color>>
+#+END_SRC
+
+where the [[Apple weight][weight]] is an =int= with the default value =0=.
+#+NAME: Apple weight
+#+BEGIN_SRC java
+private int weight = 0;
+#+END_SRC
+
+and the [[Apple color][=color=]] is a =String= with the default value =""=.
+#+NAME: Apple color
+#+BEGIN_SRC java
+private String color = "";
+#+END_SRC
+
+*** Methods
+Given a [[Apple weight][=weight=]] and a [[Apple color][=color=]], construct an [[Apple][=Apple=]].
+#+NAME: Apple constructor
+#+BEGIN_SRC java
+public Apple(int weight, String color) {
+    this.weight = weight;
+    this.color = color;
+}
+#+END_SRC
+
+**** Getters
+Get the [[Apple weight][=weight=]] of an [[Apple][=Apple=]].
+#+NAME: Apple weight getter
+#+BEGIN_SRC java
+public Integer getWeight() {
+    return weight;
+}
+#+END_SRC
+
+Get the [[Apple color][=color=]] of an [[Apple][=Apple=]].
+#+NAME: Apple color getter
+#+BEGIN_SRC java
+public String getColor() {
+    return color;
+}
+#+END_SRC
+
+**** Setters
+Set an [[Apple][=Apple=]]'s [[Apple weight][=weight=]].
+#+NAME: Apple weight setter
+#+BEGIN_SRC java
+public void setWeight(Integer weight) {
+    this.weight = weight;
+}
+#+END_SRC
+
+Set an [[Apple][=Apple=]]'s [[Apple color][=color=]].
+#+NAME: Apple color setter
+#+BEGIN_SRC java
+public void setColor(String color) {
+    this.color = color;
+}
+#+END_SRC
+
+**** Pretty Printer
+#+NAME: Apple pretty printer
+#+BEGIN_SRC java
+public String toString() {
+    return "Apple{" +
+           "color='" + color + '\'' +
+           ", weight=" + weight +
+           '}';
+}
+#+END_SRC
+
+** Filtering Methods
+We're going to need build lists of [[Apple][=Apple=]]s here, so we'll start with the empty
+list as the =result=:
+#+NAME: initialize result as the empty ArrayList
+#+BEGIN_SRC java
+List<Apple> result = new ArrayList<>();
+#+END_SRC
+
+so we can collect [[Apple][=apple=s]] matching some predicate:
+#+NAME: add apple to result
+#+BEGIN_SRC java
+result.add(apple);
+#+END_SRC
+
+Speaking of which, we can check if an [[Apple][=apple=]] is green:
+#+NAME: green apple?
+#+BEGIN_SRC java
+"green".equals(apple.getColor())
+#+END_SRC
+
+or check if its /heavy/, meaning its [[Apple weight][=weight=]] is greater than =150=:
+#+NAME: heavy apple?
+#+BEGIN_SRC java
+apple.getWeight() > 150
+#+END_SRC
+
+*** Filter Green Apples
+#+NAME: filter green apples
+#+BEGIN_SRC java
+public static List<Apple> filterGreenApples(List<Apple> inventory) {
+    <<initialize result as the empty ArrayList>>
+    <<collect the green apples iteratively>>
+    return result;
+}
+#+END_SRC
+
+#+NAME: collect the green apples iteratively
+#+BEGIN_SRC java
+for (Apple apple: inventory) {
+    if (<<green apple?>>) {
+        <<add apple to result>>
+    }
+}
+#+END_SRC
+
+*** Filter Heavy Apples
+#+NAME: filter heavy apples
+#+BEGIN_SRC java
+public static List<Apple> filterHeavyApples(List<Apple> inventory) {
+    <<initialize result as the empty ArrayList>>
+    <<collect the heavy apples iteratively>>
+    return result;
+}
+#+END_SRC
+
+#+NAME: collect the heavy apples iteratively
+#+BEGIN_SRC java
+for (Apple apple: inventory) {
+    if (<<heavy apple?>>) {
+        <<add apple to result>>
+    }
+}
+#+END_SRC
+
+*** Generic Apple Filter
+#+NAME: generic apples filter
+#+BEGIN_SRC java
+public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> pred) {
+    <<initialize result as the empty ArrayList>>
+    for (Apple apple: inventory) {
+        if (pred.test(apple)) {
+            <<add apple to result>>
+        }
+    }
+    return result;
+}
+#+END_SRC
+
+** Predicates
+#+NAME: is green apple?
+#+BEGIN_SRC java
+public static boolean isGreenApple(Apple apple) {
+    return <<green apple?>>;
+}
+#+END_SRC
+
+#+NAME: is heavy apple?
+#+BEGIN_SRC java
+public static boolean isHeavyApple(Apple apple) {
+    return <<heavy apple?>>;
+}
+#+END_SRC
+
+** Main
+#+NAME: main
+#+BEGIN_SRC java
+public static void main(String ... args) {
+
+    <<inventory>>
+
+    <<green apples by method reference>>
+
+    <<heavy apples by method reference>>
+
+    <<green apples via lambda>>
+
+    <<heavy apples via lambda>>
+
+    <<weird apples with overly complex lambda>>
+}
+#+END_SRC
+
+#+NAME: inventory
+#+BEGIN_SRC java
+List<Apple> inventory = Arrays.asList(new Apple(80, "green"),
+                                      new Apple(155, "green"),
+                                      new Apple(120, "red"));
+#+END_SRC
+
+#+NAME: green apples by method reference
+#+BEGIN_SRC java
+<<comment: just the green apples>>
+List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
+System.out.println(greenApples);
+#+END_SRC
+
+#+NAME: heavy apples by method reference
+#+BEGIN_SRC java
+<<comment: just the heavy apples>>
+List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
+System.out.println(heavyApples);
+#+END_SRC
+
+#+NAME: green apples via lambda
+#+BEGIN_SRC java
+<<comment: just the green apples>>
+List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> <<a green?>>);
+System.out.println(greenApples2);
+#+END_SRC
+
+#+NAME: heavy apples via lambda
+#+BEGIN_SRC java
+<<comment: just the heavy apples>>
+List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> <<a heavy?>>);
+System.out.println(heavyApples2);
+#+END_SRC
+
+#+NAME: weird apples with overly complex lambda
+#+BEGIN_SRC java
+// []
+List<Apple> weirdApples = filterApples(inventory, (Apple a) -> <<a light?>> ||
+                                       <<a brown?>>);
+System.out.println(weirdApples);
+#+END_SRC
+
+#+NAME: a heavy?
+#+BEGIN_SRC java
+a.getWeight() > 150
+#+END_SRC
+
+#+NAME: a light?
+#+BEGIN_SRC java
+a.getWeight() < 80
+#+END_SRC
+
+#+NAME: a green?
+#+BEGIN_SRC java
+"green".equals(a.getColor())
+#+END_SRC
+
+#+NAME: a brown?
+#+BEGIN_SRC java
+"brown".equals(a.getColor())
+#+END_SRC
+
+#+NAME: comment: just the green apples
+#+BEGIN_SRC java
+// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+#+END_SRC
+
+#+NAME: comment: just the heavy apples
+#+BEGIN_SRC java
+// [Apple{color='green', weight=155}]
+#+END_SRC
+
+Name the package =lambdasinaction.chap1=.
+#+NAME: name the package
+#+BEGIN_SRC java
+package lambdasinaction.chap1;
+#+END_SRC
+
+Import [[https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html#package.description][=java.util.*=]] and [[https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html][=Predicate<T>=]].
+#+NAME: imports
+#+BEGIN_SRC java
+import java.util.*;
+import java.util.function.Predicate;
+#+END_SRC
