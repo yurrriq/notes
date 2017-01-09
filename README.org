@@ -7,7 +7,7 @@ My notes as I learn all the things.
 #+BEGIN_SRC org :tangle index.org
 ,#+SETUPFILE: notes.org
 ,#+TITLE: Notes
-,#+SUBTITLE: My Notes as a learn all the things.
+,#+SUBTITLE: My Notes as I learn all the things.
 
 ,#+INCLUDE: sitemap.org
 #+END_SRC
