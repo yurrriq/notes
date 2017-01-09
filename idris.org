@@ -1,0 +1,25 @@
+#+STARTUP: showall
+#+SETUPFILE:   notes.org
+#+TITLE:       Idris Notes
+#+DATE:        2016-11-26
+#+DESCRIPTION: Notes as I use Idris.
+#+KEYWORDS:    Idris
+
+* Silly
+#+BEGIN_SRC idris :tangle Silly.idr
+module Silly
+
+implementation [shit] Show Nat where
+  show = const "shit"
+#+END_SRC
+
+Then, to explicitly refer to this shit implementation:
+#+BEGIN_SRC idris :tangle Silly.idr
+export
+example : IO ()
+example = putStrLn $ show @{shit} 42
+#+END_SRC
+
+#+BEGIN_SRC sh
+idris --exec 'example' Silly.idr
+#+END_SRC

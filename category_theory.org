@@ -1,0 +1,22 @@
+#+STARTUP: showall
+#+SETUPFILE:   notes.org
+#+TITLE:       Category Theory Notes
+#+DATE:        2016-11-26
+# #+DESCRIPTION:
+#+KEYWORDS:    category theory
+
+* Jargon
+** Morphism
+A structure-preserving map from one mathematical object to another.
+#+BEGIN_QUOTE
+In category theory, obey conditions specific to category theory itself.
+#+END_QUOTE
+** Homomorphism
+A structure-preserving map between two algebraic structures.
+** Isomorphism
+A homomorphism or morphism that admits and inverse.
+** Automorphism
+An isomorphism from a mathematical object to itself, i.e. an invertible
+endomorphism.
+** Endomorphism
+A morphism (or homomorphism) from a mathematical object to itself.
