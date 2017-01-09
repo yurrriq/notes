@@ -9,3 +9,8 @@ VBoxManage internalcommands createrawvmdk \
            -filename ~/VirtualBox\ VMs/${VM_NAME}/${DISK_NAME}.vmdk
            -rawdisk /dev/disk${DISK_NUMBER}s${PARTITION_NUMBER}
 #+END_SRC
+
+Make it "Retina".
+#+BEGIN_SRC sh
+VBoxManage controlvm ${VM_NAME} setvideomodehint 2048 1280 32
+#+END_SRC
