@@ -1,0 +1,46 @@
+\documentclass[11pt, oneside]{amsart}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}
+% \usepackage{graphicx}
+\usepackage{amssymb}
+
+\def\Mor{$\text{Mor}$}
+\def\ob{$\text{ob}$}
+\def\hom{$\text{hom}$}
+
+% SetFonts
+
+% SetFonts
+
+\title{Group-like Abstract Algebraic Structures}
+\author{Eric Bailey}
+% \date{}
+
+\begin{document}
+\maketitle
+\section{Semigroupoid}
+\begin{itemize}
+\item a set of objects
+\item for every two objects $A$ and $B$, a set $\Mor(A, B)$ of morphisms from $A$
+  to $B$. If $f$ is in $\Mor(A, B)$, we write $f : A \to B$.
+\item for every three objects $A$, $B$ and $C$ a binary operation $\Mor(A, B)
+  \times \Mor(B, C) \to \Mor(A, C)$ called \textit{composition of
+    morphisms}. The composition of $f : A \to B$ and $g : B \to
+  C$ is written as $g \circ f$ or $gf$.
+\end{itemize}
+
+\subsection{Axioms}
+\begin{itemize}
+\item associativity if $f : A \to B$, $g : B \to C$ and $h : C
+  \to D$ then $h \circ (g \circ f) \equiv (h \circ g) \circ f$.
+\end{itemize}
+
+
+\section{Category}
+A category $C$ consits of
+\begin{itemize}
+\item a class $\ob(C)$ of objects
+\item a class $\hom(C)$ of morphisms between the objects.
+\end{itemize}
+\end{document}
