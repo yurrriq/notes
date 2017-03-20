@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2017-01-08 Sun 22:28 -->
+<!-- 2017-03-20 Mon 06:26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>R Notes</title>
@@ -267,8 +267,8 @@ for the JavaScript code in this tag.
 <h3 id="orge1a8572">c is for combine</h3>
 <div class="outline-text-3" id="text-orge1a8572">
 <div class="org-src-container">
-<pre class="src src-R">sentence &lt;- c("this", "is", "a", "sentence")
-sentence                                     # [1] "this" "is" "a" "sentence"
+<pre class="src src-R">sentence <span style="color: #AE81FF;">&lt;-</span> c(<span style="color: #E6DB74;">"this"</span>, <span style="color: #E6DB74;">"is"</span>, <span style="color: #E6DB74;">"a"</span>, <span style="color: #E6DB74;">"sentence"</span>)
+sentence                                     <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "this" "is" "a" "sentence"</span>
 </pre>
 </div>
 </div>
@@ -277,7 +277,7 @@ sentence                                     # [1] "this" "is" "a" "sentence"
 <h3 id="org9e8df55">First index is 1, not 0</h3>
 <div class="outline-text-3" id="text-org9e8df55">
 <div class="org-src-container">
-<pre class="src src-R">sentence[1] # "this"
+<pre class="src src-R">sentence[1] <span style="color: #75715E;"># </span><span style="color: #75715E;">"this"</span>
 </pre>
 </div>
 </div>
@@ -286,8 +286,8 @@ sentence                                     # [1] "this" "is" "a" "sentence"
 <h3 id="orgf3a18e1">Overwriting</h3>
 <div class="outline-text-3" id="text-orgf3a18e1">
 <div class="org-src-container">
-<pre class="src src-R">sentence[4] &lt;- "silly"
-sentence               # [1] "this" "is" "a" "silly"
+<pre class="src src-R">sentence[4] <span style="color: #AE81FF;">&lt;-</span> <span style="color: #E6DB74;">"silly"</span>
+sentence               <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "this" "is" "a" "silly"</span>
 </pre>
 </div>
 </div>
@@ -296,8 +296,8 @@ sentence               # [1] "this" "is" "a" "silly"
 <h3 id="orga295dbc">Appending</h3>
 <div class="outline-text-3" id="text-orga295dbc">
 <div class="org-src-container">
-<pre class="src src-R">sentence[5] &lt;- "example"
-sentence                 # [1] "this" "is" "a" "silly" "example"
+<pre class="src src-R">sentence[5] <span style="color: #AE81FF;">&lt;-</span> <span style="color: #E6DB74;">"example"</span>
+sentence                 <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "this" "is" "a" "silly" "example"</span>
 </pre>
 </div>
 </div>
@@ -306,7 +306,7 @@ sentence                 # [1] "this" "is" "a" "silly" "example"
 <h3 id="org0511cbf">Getting multiple elements</h3>
 <div class="outline-text-3" id="text-org0511cbf">
 <div class="org-src-container">
-<pre class="src src-R">sentence[c(1, 5)] # [1] "this" "example"
+<pre class="src src-R">sentence[c(1, 5)] <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "this" "example"</span>
 </pre>
 </div>
 </div>
@@ -315,8 +315,8 @@ sentence                 # [1] "this" "is" "a" "silly" "example"
 <h3 id="orgd69a416">Ranges</h3>
 <div class="outline-text-3" id="text-orgd69a416">
 <div class="org-src-container">
-<pre class="src src-R">sentence[4:5]                          # [1] "silly" "example"
-sentence[4:5] &lt;- c("cool", "language") # [1] "this" "is" "a" "cool" "language"
+<pre class="src src-R">sentence[4:5]                          <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "silly" "example"</span>
+sentence[4:5] <span style="color: #AE81FF;">&lt;-</span> c(<span style="color: #E6DB74;">"cool"</span>, <span style="color: #E6DB74;">"language"</span>) <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] "this" "is" "a" "cool" "language"</span>
 </pre>
 </div>
 </div>
@@ -325,7 +325,7 @@ sentence[4:5] &lt;- c("cool", "language") # [1] "this" "is" "a" "cool" "language
 <h3 id="org4f3aec2">Sequences</h3>
 <div class="outline-text-3" id="text-org4f3aec2">
 <div class="org-src-container">
-<pre class="src src-R">5:9 == seq(5, 9) # [1] TRUE TRUE TRUE TRUE TRUE
+<pre class="src src-R">5:9 == seq(5, 9) <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] TRUE TRUE TRUE TRUE TRUE</span>
 </pre>
 </div>
 </div>
@@ -333,7 +333,7 @@ sentence[4:5] &lt;- c("cool", "language") # [1] "this" "is" "a" "cool" "language
 <h4 id="org57cab54">With a step</h4>
 <div class="outline-text-4" id="text-org57cab54">
 <div class="org-src-container">
-<pre class="src src-R">seq(2, 8, 2)     # [1] 2 4 6 8
+<pre class="src src-R">seq(2, 8, 2)     <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 2 4 6 8</span>
 </pre>
 </div>
 </div>
@@ -343,13 +343,13 @@ sentence[4:5] &lt;- c("cool", "language") # [1] "this" "is" "a" "cool" "language
 <h3 id="org0185da8">Named elements</h3>
 <div class="outline-text-3" id="text-org0185da8">
 <div class="org-src-container">
-<pre class="src src-R">named &lt;- 1:3
-names(named) &lt;- c("this", "that", "the other")
-named                                          # this      that the other
-                                               #    1         2         3
-named["the other"] &lt;- 42
-named["the other"] == named[3]                 # T
-named[3] == 42                                 # T
+<pre class="src src-R">named <span style="color: #AE81FF;">&lt;-</span> 1:3
+names(named) <span style="color: #AE81FF;">&lt;-</span> c(<span style="color: #E6DB74;">"this"</span>, <span style="color: #E6DB74;">"that"</span>, <span style="color: #E6DB74;">"the other"</span>)
+named                                          <span style="color: #75715E;"># </span><span style="color: #75715E;">this      that the other</span>
+                                               <span style="color: #75715E;">#    </span><span style="color: #75715E;">1         2         3</span>
+named[<span style="color: #E6DB74;">"the other"</span>] <span style="color: #AE81FF;">&lt;-</span> 42
+named[<span style="color: #E6DB74;">"the other"</span>] == named[3]                 <span style="color: #75715E;"># </span><span style="color: #75715E;">T</span>
+named[3] == 42                                 <span style="color: #75715E;"># </span><span style="color: #75715E;">T</span>
 </pre>
 </div>
 </div>
@@ -358,7 +358,7 @@ named[3] == 42                                 # T
 <h3 id="orgf216517">Combining</h3>
 <div class="outline-text-3" id="text-orgf216517">
 <div class="org-src-container">
-<pre class="src src-R">sails &lt;- c(1:10,5:1,1:30,15:1,1:20,10:1)
+<pre class="src src-R">sails <span style="color: #AE81FF;">&lt;-</span> c(1:10,5:1,1:30,15:1,1:20,10:1)
 barplot(sails)
 </pre>
 </div>
@@ -374,11 +374,11 @@ barplot(sails)
 <h3 id="orga870ea2">Basic arithmetic</h3>
 <div class="outline-text-3" id="text-orga870ea2">
 <div class="org-src-container">
-<pre class="src src-R">misfits &lt;- c(1, 3, 8) # [1] 1 3 8
-misfits + 10          # [1] 11 13 18
-misfits - 10          # [1] -9 -7 -2
-misfits * 10          # [1] 10 30 80
-misfits / 10          # [1] 0.1 0.3 0.8
+<pre class="src src-R">misfits <span style="color: #AE81FF;">&lt;-</span> c(1, 3, 8) <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 1 3 8</span>
+misfits + 10          <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 11 13 18</span>
+misfits - 10          <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] -9 -7 -2</span>
+misfits * 10          <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 10 30 80</span>
+misfits / 10          <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 0.1 0.3 0.8</span>
 </pre>
 </div>
 
@@ -387,7 +387,7 @@ Sort of like Clojure's <code>map</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure">(for [f [+ - * /]] (map #(f % 10) '(1 3 8)))
+<pre class="src src-clojure"><span style="color: #AE81FF;">(</span><span style="color: #F92672;">for</span> <span style="color: #66D9EF;">[</span>f <span style="color: #A6E22E;">[</span>+ - * /<span style="color: #A6E22E;">]</span><span style="color: #66D9EF;">]</span> <span style="color: #66D9EF;">(</span>map #<span style="color: #A6E22E;">(</span>f <span style="color: #FD971F;">%</span> 10<span style="color: #A6E22E;">)</span> '<span style="color: #A6E22E;">(</span>1 3 8<span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
 </pre>
 </div>
 
@@ -396,7 +396,7 @@ Keep in mind, it doesn't alter the original variable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">misfits # [1] 1 3 8
+<pre class="src src-R">misfits <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 1 3 8</span>
 </pre>
 </div>
 </div>
@@ -405,7 +405,7 @@ Keep in mind, it doesn't alter the original variable.
 <h3 id="orge716b89">Scatter plots</h3>
 <div class="outline-text-3" id="text-orge716b89">
 <div class="org-src-container">
-<pre class="src src-R">x &lt;-
+<pre class="src src-R">x <span style="color: #AE81FF;">&lt;-</span>
 </pre>
 </div>
 </div>
@@ -414,9 +414,9 @@ Keep in mind, it doesn't alter the original variable.
 <h3 id="org9ae1110">na.rm</h3>
 <div class="outline-text-3" id="text-org9ae1110">
 <div class="org-src-container">
-<pre class="src src-R">a &lt;- c(1, NA, 2, NA, 3) # [1] 1 NA 2 NA 3
-sum(a)                  # [1] NA
-sum(a, na.rm = TRUE)    # [1] 6
+<pre class="src src-R">a <span style="color: #AE81FF;">&lt;-</span> c(1, <span style="color: #66D9EF;">NA</span>, 2, <span style="color: #66D9EF;">NA</span>, 3) <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 1 NA 2 NA 3</span>
+sum(a)                  <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] NA</span>
+sum(a, na.rm = <span style="color: #66D9EF;">TRUE</span>)    <span style="color: #75715E;"># </span><span style="color: #75715E;">[1] 6</span>
 </pre>
 </div>
 </div>
@@ -432,7 +432,7 @@ sum(a, na.rm = TRUE)    # [1] 6
 </div>
 </div>
 <div id="postamble" class="status">
-<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-01-08 Sun 22:28</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.3)</span>.
+<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-03-20 Mon 06:26</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.5)</span>.
 </div>
 </body>
 </html>
