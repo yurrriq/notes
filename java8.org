@@ -140,13 +140,13 @@ list as the =result=:
 List<Apple> result = new ArrayList<>();
 #+END_SRC
 
-so we can collect [[Apple][=apple=s]] matching some predicate:
+so we can collect [[Apple][=Apple=]]s matching some predicate:
 #+NAME: add apple to result
 #+BEGIN_SRC java
 result.add(apple);
 #+END_SRC
 
-Speaking of which, we can check if an [[Apple][=apple=]] is green:
+Speaking of which, we can check if an [[Apple][=Apple=]] is green:
 #+NAME: green apple?
 #+BEGIN_SRC java
 "green".equals(apple.getColor())
