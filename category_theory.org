@@ -1,22 +1,120 @@
 #+STARTUP: showall
 #+SETUPFILE:   notes.org
+#+OPTIONS: num:nil
 #+TITLE:       Category Theory Notes
 #+DATE:        2016-11-26
 # #+DESCRIPTION:
 #+KEYWORDS:    category theory
 
 * Jargon
+** TODO Object
+** TODO Algebraic structure
 ** Morphism
-A structure-preserving map from one mathematical object to another.
+A structure-preserving map from one mathematical /object/ to another.
 #+BEGIN_QUOTE
 In category theory, obey conditions specific to category theory itself.
 #+END_QUOTE
 ** Homomorphism
-A structure-preserving map between two algebraic structures.
+A structure-preserving map between two /algebraic structures/ of the same type.
 ** Isomorphism
-A homomorphism or morphism that admits and inverse.
+A /homomorphism/ or /morphism/ that admits an /inverse/.
+Two /objects/ are /isomorphic/ if an /isomorphism/ exists between them.
 ** Automorphism
-An isomorphism from a mathematical object to itself, i.e. an invertible
-endomorphism.
+An /isomorphism/ from a mathematical /object/ to itself,
+i.e. an invertible /endomorphism/.
 ** Endomorphism
-A morphism (or homomorphism) from a mathematical object to itself.
+A /morphism/ (or /homomorphism/) from a mathematical /object/ to itself.
+** Epimorphism
+Also known as an /epic morphism/, or an /epi/. A /morphism/, $f: X \to Y$ that
+is /right-cancellative/ i.e.
+\[
+  \forall g_1, g_2: Y \to Z,
+  \ g_1 \circ f = g_2 \circ f \implies g_1 = g_2
+\]
+
+/Epimorphisms/ are /categorical/ analogues of /surjective/ /functions/.
+** TODO Right-cancellative
+** Surjective
+"onto"
+\[
+  f : X \to Y,
+  \ \forall y \in Y,\ \exists x \in X,\ f(x) = y
+\]
+** Monomorphism
+An /injective/ /homomorphism/, e.g. $X \hookrightarrow Y$. In /category theory/,
+a /monomorphism/ (a.k.a /monic morphism/ or /mono/) is a /left-cancellative/
+/morphism/, i.e.
+\[
+  \forall g_1, g_2 : Z \to X,
+  \ f : X \to Y\ s.t.\ f \circ g_1 = f \circ g_2 \implies g_1 = g_2
+\]
+
+/Monomorphisms/ are a /categorical/ generalization of /injective/ /functions/
+** TODO Left-cancellative
+** Injective
+"one-to-one"
+\[
+  \forall a, b \in X,\ f(a) = f(b) \implies  a = b
+\]
+/contrapositive/:
+\[
+  \forall a, b \in X,\ a \neq b \implies f(a) \neq f(b)
+\]
+** Category
+An /algebraic structure/ comprised of /objects/ linked by /arrows/,
+e.g. the /category/ of /sets/, which links /sets/ with /functions/.
+/Arrows/ can be composed /associatively/ and there exists an /identity/ /arrow/.
+** TODO Set
+** TODO Function
+** TODO Associativity
+** TODO Identity
+** TODO Abelian category
+A /category/ in which /morphisms/ and /objects/ can be added and in which
+/kernels/ and /cokernels/ exist and have desireable properties, e.g. the
+/category of abelian groups/, *Ab*.
+- has a /zero object/
+- has all binary /products/ and binary /coproducts/
+- has all /kernels/ and /cokernels/
+- all /monomorphisms/ and /epimorphisms/ are /normal/
+** TODO Group
+** TODO Ab
+The category of abelian groups.
+** Zero object
+An /object/ that is both /intial/ and /terminal/.
+a.k.a. /null object/.
+** Pointed category
+A /category/ with a /zero object/.
+** Strict initial object
+An /initial object/ for which every /morphism/ into $I$ is an /isomorphism/.
+** Initial object
+$I \in C, \forall X \in C \exists$ precisely one /morphism/ $I \to X$
+a.k.a. /coterminal/ or /universal/
+** Terminal object
+$T$ is /terminal/ if $\forall X \in C \exists$ a single /morphism/ $X \to T$.
+a.k.a /terminal element/
+** Product
+The "most general" /object/ which admits a /morphism/ to each of the given
+/objects/.
+*** TODO Commutative diagram
+** TODO Coproduct
+a.k.a. /categorical sum/
+*** TODO Commutative diagram
+** TODO Coproduct
+** TODO Kernel
+** TODO Cokernel
+** TODO Normal
+** TODO Module
+** TODO Ring
+** Monoid
+An /algebraic structure/ with a single /associative/ /binary operation/ and an
+/identity element/. A /monoid/ is a /semigroup/ with an /identity/.
+** TODO Image
+** TODO Codomain
+** TODO Domain
+** TODO Homology
+** TODO Cohomology
+** TODO Combinatorial topology
+** TODO Algebraic toplogy
+** TODO Abstract algebra
+** TODO Henri Poincaré
+** TODO David Hilbert

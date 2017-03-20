@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2017-01-08 Sun 22:21 -->
+<!-- 2017-03-20 Mon 06:26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Category Theory Notes</title>
@@ -225,6 +225,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -235,11 +257,59 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgb848dc1">Jargon</a>
 <ul>
+<li><a href="#org33e99ea"><span class="todo TODO">TODO</span> Object</a></li>
+<li><a href="#org80c8423"><span class="todo TODO">TODO</span> Algebraic structure</a></li>
 <li><a href="#org0056899">Morphism</a></li>
 <li><a href="#org8a99c7d">Homomorphism</a></li>
 <li><a href="#org2e94c5d">Isomorphism</a></li>
 <li><a href="#orgb2d217f">Automorphism</a></li>
 <li><a href="#org4be37e1">Endomorphism</a></li>
+<li><a href="#org775f462">Epimorphism</a></li>
+<li><a href="#org4bb8ab6"><span class="todo TODO">TODO</span> Right-cancellative</a></li>
+<li><a href="#org62b55d0">Surjective</a></li>
+<li><a href="#org8a27f2d">Monomorphism</a></li>
+<li><a href="#org9a16882"><span class="todo TODO">TODO</span> Left-cancellative</a></li>
+<li><a href="#org9bd9077">Injective</a></li>
+<li><a href="#org3a18291">Category</a></li>
+<li><a href="#orgeb5186c"><span class="todo TODO">TODO</span> Set</a></li>
+<li><a href="#orgcf46c8e"><span class="todo TODO">TODO</span> Function</a></li>
+<li><a href="#org5328971"><span class="todo TODO">TODO</span> Associativity</a></li>
+<li><a href="#orgcafc159"><span class="todo TODO">TODO</span> Identity</a></li>
+<li><a href="#org897792e"><span class="todo TODO">TODO</span> Abelian category</a></li>
+<li><a href="#org6f3b7b9"><span class="todo TODO">TODO</span> Group</a></li>
+<li><a href="#orgbdc74a9"><span class="todo TODO">TODO</span> Ab</a></li>
+<li><a href="#orgc3da3fb">Zero object</a></li>
+<li><a href="#org7bbada7">Pointed category</a></li>
+<li><a href="#orge07f19d">Strict initial object</a></li>
+<li><a href="#org963e51b">Initial object</a></li>
+<li><a href="#orga537667">Terminal object</a></li>
+<li><a href="#org62a2458">Product</a>
+<ul>
+<li><a href="#orge10917d"><span class="todo TODO">TODO</span> Commutative diagram</a></li>
+</ul>
+</li>
+<li><a href="#org320567d"><span class="todo TODO">TODO</span> Coproduct</a>
+<ul>
+<li><a href="#org23e984b"><span class="todo TODO">TODO</span> Commutative diagram</a></li>
+</ul>
+</li>
+<li><a href="#org7f31c33"><span class="todo TODO">TODO</span> Coproduct</a></li>
+<li><a href="#org3d89873"><span class="todo TODO">TODO</span> Kernel</a></li>
+<li><a href="#org57043a3"><span class="todo TODO">TODO</span> Cokernel</a></li>
+<li><a href="#orgf300b8c"><span class="todo TODO">TODO</span> Normal</a></li>
+<li><a href="#orge72cc91"><span class="todo TODO">TODO</span> Module</a></li>
+<li><a href="#org6171b2e"><span class="todo TODO">TODO</span> Ring</a></li>
+<li><a href="#orgb792a18">Monoid</a></li>
+<li><a href="#orged2b0ce"><span class="todo TODO">TODO</span> Image</a></li>
+<li><a href="#org9e9c337"><span class="todo TODO">TODO</span> Codomain</a></li>
+<li><a href="#org532564c"><span class="todo TODO">TODO</span> Domain</a></li>
+<li><a href="#org8c0a498"><span class="todo TODO">TODO</span> Homology</a></li>
+<li><a href="#orge0d304d"><span class="todo TODO">TODO</span> Cohomology</a></li>
+<li><a href="#org01c4a84"><span class="todo TODO">TODO</span> Combinatorial topology</a></li>
+<li><a href="#orgca94424"><span class="todo TODO">TODO</span> Algebraic toplogy</a></li>
+<li><a href="#orgbed16f9"><span class="todo TODO">TODO</span> Abstract algebra</a></li>
+<li><a href="#orgc724270"><span class="todo TODO">TODO</span> Henri Poincaré</a></li>
+<li><a href="#orgc8cd2f9"><span class="todo TODO">TODO</span> David Hilbert</a></li>
 </ul>
 </li>
 </ul>
@@ -249,11 +319,17 @@ for the JavaScript code in this tag.
 <div id="outline-container-orgb848dc1" class="outline-2">
 <h2 id="orgb848dc1">Jargon</h2>
 <div class="outline-text-2" id="text-orgb848dc1">
-</div><div id="outline-container-org0056899" class="outline-3">
+</div><div id="outline-container-org33e99ea" class="outline-3">
+<h3 id="org33e99ea"><span class="todo TODO">TODO</span> Object</h3>
+</div>
+<div id="outline-container-org80c8423" class="outline-3">
+<h3 id="org80c8423"><span class="todo TODO">TODO</span> Algebraic structure</h3>
+</div>
+<div id="outline-container-org0056899" class="outline-3">
 <h3 id="org0056899">Morphism</h3>
 <div class="outline-text-3" id="text-org0056899">
 <p>
-A structure-preserving map from one mathematical object to another.
+A structure-preserving map from one mathematical <i>object</i> to another.
 </p>
 <blockquote>
 <p>
@@ -266,7 +342,7 @@ In category theory, obey conditions specific to category theory itself.
 <h3 id="org8a99c7d">Homomorphism</h3>
 <div class="outline-text-3" id="text-org8a99c7d">
 <p>
-A structure-preserving map between two algebraic structures.
+A structure-preserving map between two <i>algebraic structures</i> of the same type.
 </p>
 </div>
 </div>
@@ -274,7 +350,8 @@ A structure-preserving map between two algebraic structures.
 <h3 id="org2e94c5d">Isomorphism</h3>
 <div class="outline-text-3" id="text-org2e94c5d">
 <p>
-A homomorphism or morphism that admits and inverse.
+A <i>homomorphism</i> or <i>morphism</i> that admits an <i>inverse</i>.
+Two <i>objects</i> are <i>isomorphic</i> if an <i>isomorphism</i> exists between them.
 </p>
 </div>
 </div>
@@ -282,8 +359,8 @@ A homomorphism or morphism that admits and inverse.
 <h3 id="orgb2d217f">Automorphism</h3>
 <div class="outline-text-3" id="text-orgb2d217f">
 <p>
-An isomorphism from a mathematical object to itself, i.e. an invertible
-endomorphism.
+An <i>isomorphism</i> from a mathematical <i>object</i> to itself,
+i.e. an invertible <i>endomorphism</i>.
 </p>
 </div>
 </div>
@@ -291,14 +368,254 @@ endomorphism.
 <h3 id="org4be37e1">Endomorphism</h3>
 <div class="outline-text-3" id="text-org4be37e1">
 <p>
-A morphism (or homomorphism) from a mathematical object to itself.
+A <i>morphism</i> (or <i>homomorphism</i>) from a mathematical <i>object</i> to itself.
 </p>
 </div>
+</div>
+<div id="outline-container-org775f462" class="outline-3">
+<h3 id="org775f462">Epimorphism</h3>
+<div class="outline-text-3" id="text-org775f462">
+<p>
+Also known as an <i>epic morphism</i>, or an <i>epi</i>. A <i>morphism</i>, \(f: X \to Y\) that
+is <i>right-cancellative</i> i.e.
+\[
+  \forall g_1, g_2: Y \to Z,
+  \ g_1 \circ f = g_2 \circ f \implies g_1 = g_2
+\]
+</p>
+
+<p>
+<i>Epimorphisms</i> are <i>categorical</i> analogues of <i>surjective</i> <i>functions</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org4bb8ab6" class="outline-3">
+<h3 id="org4bb8ab6"><span class="todo TODO">TODO</span> Right-cancellative</h3>
+</div>
+<div id="outline-container-org62b55d0" class="outline-3">
+<h3 id="org62b55d0">Surjective</h3>
+<div class="outline-text-3" id="text-org62b55d0">
+<p>
+"onto"
+\[
+  f : X \to Y,
+  \ \forall y \in Y,\ \exists x \in X,\ f(x) = y
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org8a27f2d" class="outline-3">
+<h3 id="org8a27f2d">Monomorphism</h3>
+<div class="outline-text-3" id="text-org8a27f2d">
+<p>
+An <i>injective</i> <i>homomorphism</i>, e.g. \(X \hookrightarrow Y\). In <i>category theory</i>,
+a <i>monomorphism</i> (a.k.a <i>monic morphism</i> or <i>mono</i>) is a <i>left-cancellative</i>
+<i>morphism</i>, i.e.
+\[
+  \forall g_1, g_2 : Z \to X,
+  \ f : X \to Y\ s.t.\ f \circ g_1 = f \circ g_2 \implies g_1 = g_2
+\]
+</p>
+
+<p>
+<i>Monomorphisms</i> are a <i>categorical</i> generalization of <i>injective</i> <i>functions</i>
+</p>
+</div>
+</div>
+<div id="outline-container-org9a16882" class="outline-3">
+<h3 id="org9a16882"><span class="todo TODO">TODO</span> Left-cancellative</h3>
+</div>
+<div id="outline-container-org9bd9077" class="outline-3">
+<h3 id="org9bd9077">Injective</h3>
+<div class="outline-text-3" id="text-org9bd9077">
+<p>
+"one-to-one"
+\[
+  \forall a, b \in X,\ f(a) = f(b) \implies  a = b
+\]
+<i>contrapositive</i>:
+\[
+  \forall a, b \in X,\ a \neq b \implies f(a) \neq f(b)
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org3a18291" class="outline-3">
+<h3 id="org3a18291">Category</h3>
+<div class="outline-text-3" id="text-org3a18291">
+<p>
+An <i>algebraic structure</i> comprised of <i>objects</i> linked by <i>arrows</i>,
+e.g. the <i>category</i> of <i>sets</i>, which links <i>sets</i> with <i>functions</i>.
+<i>Arrows</i> can be composed <i>associatively</i> and there exists an <i>identity</i> <i>arrow</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgeb5186c" class="outline-3">
+<h3 id="orgeb5186c"><span class="todo TODO">TODO</span> Set</h3>
+</div>
+<div id="outline-container-orgcf46c8e" class="outline-3">
+<h3 id="orgcf46c8e"><span class="todo TODO">TODO</span> Function</h3>
+</div>
+<div id="outline-container-org5328971" class="outline-3">
+<h3 id="org5328971"><span class="todo TODO">TODO</span> Associativity</h3>
+</div>
+<div id="outline-container-orgcafc159" class="outline-3">
+<h3 id="orgcafc159"><span class="todo TODO">TODO</span> Identity</h3>
+</div>
+<div id="outline-container-org897792e" class="outline-3">
+<h3 id="org897792e"><span class="todo TODO">TODO</span> Abelian category</h3>
+<div class="outline-text-3" id="text-org897792e">
+<p>
+A <i>category</i> in which <i>morphisms</i> and <i>objects</i> can be added and in which
+<i>kernels</i> and <i>cokernels</i> exist and have desireable properties, e.g. the
+<i>category of abelian groups</i>, <b>Ab</b>.
+</p>
+<ul class="org-ul">
+<li>has a <i>zero object</i></li>
+<li>has all binary <i>products</i> and binary <i>coproducts</i></li>
+<li>has all <i>kernels</i> and <i>cokernels</i></li>
+<li>all <i>monomorphisms</i> and <i>epimorphisms</i> are <i>normal</i></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6f3b7b9" class="outline-3">
+<h3 id="org6f3b7b9"><span class="todo TODO">TODO</span> Group</h3>
+</div>
+<div id="outline-container-orgbdc74a9" class="outline-3">
+<h3 id="orgbdc74a9"><span class="todo TODO">TODO</span> Ab</h3>
+<div class="outline-text-3" id="text-orgbdc74a9">
+<p>
+The category of abelian groups.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3da3fb" class="outline-3">
+<h3 id="orgc3da3fb">Zero object</h3>
+<div class="outline-text-3" id="text-orgc3da3fb">
+<p>
+An <i>object</i> that is both <i>intial</i> and <i>terminal</i>.
+a.k.a. <i>null object</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org7bbada7" class="outline-3">
+<h3 id="org7bbada7">Pointed category</h3>
+<div class="outline-text-3" id="text-org7bbada7">
+<p>
+A <i>category</i> with a <i>zero object</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-orge07f19d" class="outline-3">
+<h3 id="orge07f19d">Strict initial object</h3>
+<div class="outline-text-3" id="text-orge07f19d">
+<p>
+An <i>initial object</i> for which every <i>morphism</i> into \(I\) is an <i>isomorphism</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org963e51b" class="outline-3">
+<h3 id="org963e51b">Initial object</h3>
+<div class="outline-text-3" id="text-org963e51b">
+<p>
+\(I \in C, \forall X \in C \exists\) precisely one <i>morphism</i> \(I \to X\)
+a.k.a. <i>coterminal</i> or <i>universal</i>
+</p>
+</div>
+</div>
+<div id="outline-container-orga537667" class="outline-3">
+<h3 id="orga537667">Terminal object</h3>
+<div class="outline-text-3" id="text-orga537667">
+<p>
+\(T\) is <i>terminal</i> if \(\forall X \in C \exists\) a single <i>morphism</i> \(X \to T\).
+a.k.a <i>terminal element</i>
+</p>
+</div>
+</div>
+<div id="outline-container-org62a2458" class="outline-3">
+<h3 id="org62a2458">Product</h3>
+<div class="outline-text-3" id="text-org62a2458">
+<p>
+The "most general" <i>object</i> which admits a <i>morphism</i> to each of the given
+<i>objects</i>.
+</p>
+</div>
+<div id="outline-container-orge10917d" class="outline-4">
+<h4 id="orge10917d"><span class="todo TODO">TODO</span> Commutative diagram</h4>
+</div>
+</div>
+<div id="outline-container-org320567d" class="outline-3">
+<h3 id="org320567d"><span class="todo TODO">TODO</span> Coproduct</h3>
+<div class="outline-text-3" id="text-org320567d">
+<p>
+a.k.a. <i>categorical sum</i>
+</p>
+</div>
+<div id="outline-container-org23e984b" class="outline-4">
+<h4 id="org23e984b"><span class="todo TODO">TODO</span> Commutative diagram</h4>
+</div>
+</div>
+<div id="outline-container-org7f31c33" class="outline-3">
+<h3 id="org7f31c33"><span class="todo TODO">TODO</span> Coproduct</h3>
+</div>
+<div id="outline-container-org3d89873" class="outline-3">
+<h3 id="org3d89873"><span class="todo TODO">TODO</span> Kernel</h3>
+</div>
+<div id="outline-container-org57043a3" class="outline-3">
+<h3 id="org57043a3"><span class="todo TODO">TODO</span> Cokernel</h3>
+</div>
+<div id="outline-container-orgf300b8c" class="outline-3">
+<h3 id="orgf300b8c"><span class="todo TODO">TODO</span> Normal</h3>
+</div>
+<div id="outline-container-orge72cc91" class="outline-3">
+<h3 id="orge72cc91"><span class="todo TODO">TODO</span> Module</h3>
+</div>
+<div id="outline-container-org6171b2e" class="outline-3">
+<h3 id="org6171b2e"><span class="todo TODO">TODO</span> Ring</h3>
+</div>
+<div id="outline-container-orgb792a18" class="outline-3">
+<h3 id="orgb792a18">Monoid</h3>
+<div class="outline-text-3" id="text-orgb792a18">
+<p>
+An <i>algebraic structure</i> with a single <i>associative</i> <i>binary operation</i> and an
+<i>identity element</i>. A <i>monoid</i> is a <i>semigroup</i> with an <i>identity</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-orged2b0ce" class="outline-3">
+<h3 id="orged2b0ce"><span class="todo TODO">TODO</span> Image</h3>
+</div>
+<div id="outline-container-org9e9c337" class="outline-3">
+<h3 id="org9e9c337"><span class="todo TODO">TODO</span> Codomain</h3>
+</div>
+<div id="outline-container-org532564c" class="outline-3">
+<h3 id="org532564c"><span class="todo TODO">TODO</span> Domain</h3>
+</div>
+<div id="outline-container-org8c0a498" class="outline-3">
+<h3 id="org8c0a498"><span class="todo TODO">TODO</span> Homology</h3>
+</div>
+<div id="outline-container-orge0d304d" class="outline-3">
+<h3 id="orge0d304d"><span class="todo TODO">TODO</span> Cohomology</h3>
+</div>
+<div id="outline-container-org01c4a84" class="outline-3">
+<h3 id="org01c4a84"><span class="todo TODO">TODO</span> Combinatorial topology</h3>
+</div>
+<div id="outline-container-orgca94424" class="outline-3">
+<h3 id="orgca94424"><span class="todo TODO">TODO</span> Algebraic toplogy</h3>
+</div>
+<div id="outline-container-orgbed16f9" class="outline-3">
+<h3 id="orgbed16f9"><span class="todo TODO">TODO</span> Abstract algebra</h3>
+</div>
+<div id="outline-container-orgc724270" class="outline-3">
+<h3 id="orgc724270"><span class="todo TODO">TODO</span> Henri Poincaré</h3>
+</div>
+<div id="outline-container-orgc8cd2f9" class="outline-3">
+<h3 id="orgc8cd2f9"><span class="todo TODO">TODO</span> David Hilbert</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-01-08 Sun 22:21</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.3)</span>.
+<p>Generated by <span class="author">Eric Bailey</span> on <span class="date">2017-03-20 Mon 06:26</span> using <span class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 9.0.5)</span>.
 </div>
 </body>
 </html>
